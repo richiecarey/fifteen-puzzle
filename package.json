@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel src/index.html",
     "format": "prettier \"src/**/*.{css,js,html}\" --write",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet"
@@ -12,8 +13,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-utils": ">=1.4.1",
     "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
