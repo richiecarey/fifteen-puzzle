@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Tile from "./Tile";
 import "./FifteenPuzzle.css";
+import legalMove from "./utils";
 
 export default function FifteenPuzzle() {
   let tiles = [];
@@ -12,6 +13,10 @@ export default function FifteenPuzzle() {
   const [num, setNum] = useState(tiles);
 
   function handler(i, j) {
+    if (legalMove()) {
+      console.log("this is true");
+    }
+
     tiles = [...num];
     tiles[blank[0]][blank[1]] = tiles[i][j];
     tiles[i][j] = 0;
