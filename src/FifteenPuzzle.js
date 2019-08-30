@@ -4,33 +4,35 @@ import "./FifteenPuzzle.css";
 import legalMove from "./utils";
 
 export default function FifteenPuzzle() {
-  let tiles = [];
-  let blank = [];
-
-  tiles = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]];
-  blank = [3, 3];
+  var tiles = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]];
+  var blank = [3, 3];
 
   const [num, setNum] = useState(tiles);
+  const [open, setOpen] = useState(blank);
 
-  function handler(i, j) {
-    if (legalMove()) {
-      console.log("this is true");
+  function handler(clickX, clickY) {
+    if (legalMove(clickX, clickY, open)) {
+      tiles = [...num];
+      blank = [...open];
+
+      tiles[blank[0]][blank[1]] = tiles[clickX][clickY];
+      tiles[clickX][clickY] = 0;
+
+      blank[0] = clickX;
+      blank[1] = clickY;
+
+      setNum(tiles);
+      setOpen(blank);
     }
-
-    tiles = [...num];
-    tiles[blank[0]][blank[1]] = tiles[i][j];
-    tiles[i][j] = 0;
-    blank = [i, j];
-    setNum(tiles);
   }
 
   const listItems = num.map((numArray, row) => {
     return numArray.map((num, col) => (
       <Tile
-        key={(row + col).toString()}
+        key={(row + "." + col).toString()}
         num={num}
-        i={row}
-        j={col}
+        clickX={row}
+        clickY={col}
         handler={handler}
       />
     ));
