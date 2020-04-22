@@ -2,6 +2,9 @@ button {
   width: 100px;
   height: 100px;
 }
+button:focus {
+  outline: none;
+}
 .square {
   background: #444;
   border: 1px solid #555;
